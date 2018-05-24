@@ -1,0 +1,47 @@
+#N canvas 271 113 616 438 10;
+#X obj 24 308 cnv 15 400 30 empty empty OUTPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 24 111 cnv 15 400 30 empty empty CONTROLS 20 12 0 14 -99865
+-262144 0;
+#X obj 24 240 cnv 15 400 30 empty empty INPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 20 17 cnv 15 400 30 empty empty CLOCKWERK 20 12 0 14 -99865
+-262144 0;
+#X text 25 146 none/;
+#X obj 24 170 cnv 15 400 30 empty empty PARAMETERS 20 12 0 14 -99865
+-262144 0;
+#X text 25 206 none/;
+#X text 24 49 Clock that generates trigger signal at audio rate. A
+trigger audio clock signal is a non rectangle signal that runs at the
+configured rate.;
+#X text 23 274 IN - 1: toggle clock on/off \, 2: int clock rate;
+#X text 24 346 OUT - 1: sig: clock trigger signal at audio rate;
+#X obj 440 149 vp-clockwerk;
+#X obj 478 47 r pd-dsp-started;
+#X obj 439 19 r pd-dsp-stopped;
+#X msg 478 69 1;
+#X msg 439 41 0;
+#X msg 509 115 441;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-scope 512 float 0;
+#X coords 0 1 511 -1 100 60 1 0 0;
+#X restore 441 275 graph;
+#X obj 536 163 loadbang;
+#X msg 536 185 1;
+#X obj 536 207 metro 200;
+#X obj 440 234 tabwrite~ \$0-scope;
+#X text 506 98 clock rate;
+#X msg 442 355 \; pd dsp 1;
+#X msg 535 355 \; pd dsp 0;
+#X text 447 392 DSP ON;
+#X text 538 392 DSP OFF;
+#X connect 10 0 20 0;
+#X connect 11 0 13 0;
+#X connect 12 0 14 0;
+#X connect 13 0 10 0;
+#X connect 14 0 10 0;
+#X connect 15 0 10 1;
+#X connect 17 0 18 0;
+#X connect 17 0 15 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
