@@ -1,5 +1,5 @@
-#N canvas 379 395 574 388 10;
-#X declare -path ../vp_base;
+#N canvas 379 395 575 400 10;
+#X declare -path ../vp-base;
 #X obj 142 71 cnv 5 5 5 empty empty CLOCKWERK 0 0 0 12 -262144 -66577
 0;
 #X obj 156 82 cnv 5 5 5 empty empty htaudio.de 0 0 0 8 -262144 -1 0
@@ -7,7 +7,6 @@
 #X obj 13 363 outlet~;
 #X obj 15 22 cnv 5 5 5 empty empty IN/Hz 0 0 0 8 -262144 -1 0;
 #X obj 15 84 cnv 5 5 5 empty empty CLK_OUT 0 0 0 8 -262144 -1 0;
-#X obj 14 420 declare -path ../vp_base;
 #X obj 13 109 inlet;
 #X obj 13 131 f 440;
 #X obj 13 172 sig~;
@@ -17,12 +16,12 @@
 #X obj 13 282 -~ 1;
 #X obj 13 334 *~;
 #X obj 18 54 tgl 15 0 \$0-cw-value-onoff-s \$0-cw-value-onoff-r ON/OFF
-20 7 0 10 -262144 -1 -1 1 1;
+20 7 0 10 -262144 -1 -1 0 1;
 #X obj 335 22 inlet;
 #X obj 13 238 expr~ $v1 < 0;
 #X obj 107 247 r \$0-startclk;
 #X obj 193 247 r \$0-stopclk;
-#X obj 335 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 335 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 334 122 select 1;
 #X obj 334 162 s \$0-startclk;
@@ -31,10 +30,10 @@
 -1 -1;
 #X obj 360 143 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 552 159 481 508 toggle-clk-flipflop 1;
-#X obj 182 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#N canvas 552 159 481 508 toggle-clk-flipflop 0;
+#X obj 182 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 256 78 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 256 78 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 190 194 f 0;
 #X obj 264 192 f 0;
@@ -79,28 +78,29 @@
 #X msg 132 171 label \$1;
 #X msg 132 126 symbol \$1_Hz;
 #X obj 132 148 makefilename %s;
+#X obj 581 13 declare -path ../vp-base;
+#X connect 5 0 6 0;
+#X connect 5 0 32 0;
 #X connect 6 0 7 0;
-#X connect 6 0 33 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 10 0 16 0;
+#X connect 9 0 15 0;
+#X connect 10 0 11 0;
 #X connect 11 0 12 0;
-#X connect 12 0 13 0;
-#X connect 13 0 2 0;
-#X connect 15 0 19 0;
-#X connect 16 0 11 0;
-#X connect 17 0 27 0;
-#X connect 18 0 26 0;
-#X connect 19 0 25 0;
-#X connect 20 0 21 0;
-#X connect 20 0 23 0;
-#X connect 20 1 22 0;
-#X connect 20 1 24 0;
-#X connect 26 0 13 1;
-#X connect 27 0 13 1;
-#X connect 29 0 20 0;
-#X connect 32 0 31 0;
-#X connect 33 0 34 0;
-#X connect 34 0 32 0;
+#X connect 12 0 2 0;
+#X connect 14 0 18 0;
+#X connect 15 0 10 0;
+#X connect 16 0 26 0;
+#X connect 17 0 25 0;
+#X connect 18 0 24 0;
+#X connect 19 0 20 0;
+#X connect 19 0 22 0;
+#X connect 19 1 21 0;
+#X connect 19 1 23 0;
+#X connect 25 0 12 1;
+#X connect 26 0 12 1;
+#X connect 28 0 19 0;
+#X connect 31 0 30 0;
+#X connect 32 0 33 0;
+#X connect 33 0 31 0;
 #X coords 0 -1 1 1 200 80 2 10 12;
