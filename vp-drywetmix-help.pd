@@ -1,0 +1,31 @@
+#N canvas 572 365 863 386 10;
+#X declare -path ../vp-base;
+#X declare -path ../vp-modules;
+#X obj 24 261 cnv 15 400 30 empty empty OUTPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 24 114 cnv 15 400 30 empty empty CONTROLS 20 12 0 14 -99865
+-262144 0;
+#X obj 24 193 cnv 15 400 30 empty empty INPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 20 17 cnv 15 400 30 empty empty DRYWETMIX 20 12 0 14 -99865
+-262144 0;
+#X obj 26 322 declare -path ../vp-base;
+#X obj 26 345 declare -path ../vp-modules;
+#X msg 444 266 \; pd dsp 1;
+#X msg 537 266 \; pd dsp 0;
+#X text 449 303 DSP ON;
+#X text 540 303 DSP OFF;
+#X obj 444 10 osc~ 440;
+#X obj 444 42 vp-drywetmix;
+#X obj 444 130 vp-sidekik;
+#X obj 514 10 osc~ 800;
+#X text 25 53 DRYWETMIX is a dry and wet signal mixer. The mix slider
+mixes both signals linearly.;
+#X text 25 151 MIX: linear mix setting between bot dry and wet input
+signals, f 65;
+#X text 24 299 OUT - mono mix audio out;
+#X text 24 226 DRY - dry audio input;
+#X text 24 238 WET - wet audio input;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 11 1;

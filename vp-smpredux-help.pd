@@ -1,0 +1,28 @@
+#N canvas 38 64 922 451 10;
+#X declare -path ../vp-base;
+#X declare -path ../vp-modules;
+#X obj 24 251 cnv 15 400 30 empty empty OUTPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 24 114 cnv 15 400 30 empty empty CONTROLS 20 12 0 14 -99865
+-262144 0;
+#X obj 24 193 cnv 15 400 30 empty empty INPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 20 17 cnv 15 400 30 empty empty SAMPLE-REDUX 20 12 0 14 -99865
+-262144 0;
+#X obj 443 17 adc~;
+#X text 25 151 SAMPLE_RATE: Control the sample rate from lo -> hi rates
+, f 65;
+#X text 24 226 IN - mono audio in;
+#X text 24 289 OUT - mono audio out;
+#X obj 26 312 declare -path ../vp-base;
+#X obj 26 335 declare -path ../vp-modules;
+#X msg 443 216 \; pd dsp 1;
+#X msg 536 216 \; pd dsp 0;
+#X text 448 253 DSP ON;
+#X text 539 253 DSP OFF;
+#X text 24 53 Sample-Redux is a digital sample rate reduction unit.
+This unit is ideally used like an effect as it supports a downsampling
+interval between 0Hz and 12kHz. only at the highest setting.;
+#X text 25 163 CRUNCH: Disable output lo-pass filters., f 65;
+#X obj 443 47 vp-smpredux;
+#X connect 4 0 16 0;

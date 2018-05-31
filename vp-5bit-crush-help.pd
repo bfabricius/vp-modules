@@ -1,0 +1,26 @@
+#N canvas 143 138 867 394 10;
+#X declare -path ../vp-base;
+#X declare -path ../vp-modules;
+#X obj 24 251 cnv 15 400 30 empty empty OUTPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 24 114 cnv 15 400 30 empty empty CONTROLS 20 12 0 14 -99865
+-262144 0;
+#X obj 24 193 cnv 15 400 30 empty empty INPUTS 20 12 0 14 -99865 -262144
+0;
+#X obj 20 17 cnv 15 400 30 empty empty 5BIT-CRUSH 20 12 0 14 -99865
+-262144 0;
+#X obj 443 17 adc~;
+#X text 24 226 IN - mono audio in;
+#X text 24 289 OUT - mono audio out;
+#X obj 26 312 declare -path ../vp-base;
+#X obj 26 335 declare -path ../vp-modules;
+#X msg 443 216 \; pd dsp 1;
+#X msg 536 216 \; pd dsp 0;
+#X text 448 253 DSP ON;
+#X text 539 253 DSP OFF;
+#X obj 443 45 vp-5bit-crush;
+#X text 25 151 REDUX_AMT: Amount of bit depth reduction, f 65;
+#X text 25 53 This unit is a bitcrusher working at a lo-fi bit-depth
+of 5bits at maximum setting. NOTE: watch out for high output signal
+gain when operating with a lot of redux.;
+#X connect 4 0 13 0;
